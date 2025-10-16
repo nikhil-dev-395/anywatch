@@ -1,14 +1,24 @@
 import express, { NextFunction, Request, Response } from "express";
 import helmet from "helmet";
 import morgan from "morgan";
+import cors from "cors";
+
 import { ApiResponse } from "./handlers/Response.handler";
+import { env } from "./env";
 const app = express();
 
 // middleware
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
+    allowedHeaders: "*",
+  })
+);
 app.use(express.json({ limit: "1mb" }));
 app.use(express.urlencoded({ extended: true, limit: "1mb" }));
-app.use(helmet());
-app.use(morgan("dev"));
+app.use(helmet({ contentSecurityPolicy: false }));
+app.use(morgan(env.MORGAN_LEVEL));
 
 /**
  * api routes
