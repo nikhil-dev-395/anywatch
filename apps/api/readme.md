@@ -1,3 +1,3 @@
 # api of anywatch monorepo
 
-# make .env.example by shell
+ - make .env.example by shell
