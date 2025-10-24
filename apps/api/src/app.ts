@@ -2,8 +2,8 @@ import express, { NextFunction, Request, Response } from "express";
 import helmet from "helmet";
 import morgan from "morgan";
 import cors from "cors";
-import {logger} from "../src/lib/logger"
-import { ApiResponse } from "./handlers/Response.handler";
+import { logger } from "../src/lib/logger";
+import { ApiResponse } from "./handlers/response.handler";
 import { env } from "./env";
 const app = express();
 
@@ -32,9 +32,8 @@ app.get("/", (req: Request, res: Response, next: NextFunction) => {
  */
 
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-  
-  const statusCode =  500;
-  logger.warn(err instanceof Error ? err.message : "interan server error")
+  const statusCode = 500;
+  logger.warn(err instanceof Error ? err.message : "interan server error");
   return new ApiResponse(
     statusCode,
     err instanceof Error ? err.message : "internal serve error"

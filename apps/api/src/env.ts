@@ -6,6 +6,7 @@ const envSchema = z.object({
   PORT: z.coerce.number().default(3000),
   LOG_LEVEL: z.enum(["warn", "debug", "info"]).default("info"),
   MORGAN_LEVEL: z.enum(["dev"]).default("dev"),
+  MONGODB_URL: z.string().min(10),
 });
 
 const res = envSchema.safeParse(process.env);

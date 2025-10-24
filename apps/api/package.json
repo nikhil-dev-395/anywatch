@@ -1,12 +1,12 @@
 {
     "name": "api",
     "version": "1.0.0",
-    "description": "anywatch backend",
+    "description": "anywatch backend , here we will extract data from other sites and provide it to users",
     "main": "index.js",
     "scripts": {
         "build": "rimraf dist && tsc",
         "start": "node dist/index.js",
-        "dev": "nodemon src/index.ts",
+        "dev": "nodemon -r tsconfig-paths/register src/index.ts",
         "clean": "rimraf dist"
     },
     "keywords": [
@@ -20,12 +20,17 @@
         "node": ">=18"
     },
     "devDependencies": {
+        "@eslint/js": "^9.38.0",
         "@types/express": "^5.0.3",
         "@types/node": "^22.18.10",
+        "eslint": "^9.38.0",
+        "globals": "^16.4.0",
+        "jiti": "^2.6.1",
         "nodemon": "^3.1.10",
         "rimraf": "^6.0.1",
         "ts-node": "^10.9.2",
-        "typescript": "^5.9.2"
+        "typescript": "^5.9.2",
+        "typescript-eslint": "^8.46.2"
     },
     "dependencies": {
         "@types/morgan": "^1.9.10",
@@ -38,6 +43,7 @@
         "mongoose": "^8.19.1",
         "morgan": "^1.10.1",
         "pino": "^10.0.0",
+        "tsconfig-paths": "^4.2.0",
         "zod": "^4.1.12"
     }
 }
